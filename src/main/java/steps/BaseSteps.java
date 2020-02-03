@@ -20,7 +20,7 @@ public class BaseSteps {
     @Before
     public static void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
-        baseUrl = "http://www.sberbank.ru/ru/person";
+        baseUrl = "https://yandex.ru/";
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();

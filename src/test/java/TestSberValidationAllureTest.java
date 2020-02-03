@@ -1,12 +1,6 @@
-import com.google.common.collect.SortedSetMultimap;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.MainPage;
-import pages.PolicyPage;
-import pages.SberPage;
-import pages.SendAppPage;
 import steps.*;
 import util.Init;
 

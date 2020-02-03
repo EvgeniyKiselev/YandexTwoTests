@@ -1,7 +1,5 @@
 package steps;
 import io.qameta.allure.Step;
-import pages.MainPage;
-import pages.SberPage;
 import pages.PolicyPage;
 
 public class PolicySteps {

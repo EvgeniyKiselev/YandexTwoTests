@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="SeleniumAllureCucumber" />
         <module name="SeleniumTask1" />
+        <module name="YandexTwoTests" />
       </profile>
     </annotationProcessing>
   </component>

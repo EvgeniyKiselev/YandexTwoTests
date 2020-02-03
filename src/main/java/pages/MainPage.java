@@ -9,11 +9,11 @@ import static util.Init.getDriver;
 
 public class MainPage extends BasePage {
 
-    @FindBy(xpath = "//ul[@class = 'lg-menu__list']//button[@class = 'lg-menu__link']/span[contains(text(), 'Страхование')]")
-    WebElement menuItems;
+    @FindBy(xpath = "//a[@data-id='market']")
+    WebElement market;
 
-    @FindBy(xpath = "//div[@class = 'lg-menu__sub']//a[contains(text(), 'Страхование путешественников')]")
-    WebElement menuInsurance;
+    @FindBy(xpath = "//a[@href = '/catalog--elektronika/54440']")
+    WebElement electronic;
 
     public MainPage(){
         this.driver = getDriver();
@@ -23,13 +23,13 @@ public class MainPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void selectMenuItem(){
-         WebElement menuItems = driver.findElement(By.xpath("//ul[@class = 'lg-menu__list']//button[@class = 'lg-menu__link']/span[contains(text(), 'Страхование')]"));
-         menuItems.click();
+    public void selectMarket(){
+         WebElement market = driver.findElement(By.xpath("//a[@data-id='market']"));
+        market.click();
     }
 
-    public void selectInsuranceItem(){
-        WebElement menuInsurance = driver.findElement(By.xpath("//div[@class = 'lg-menu__sub']//a[contains(text(), 'Страхование путешественников')]"));
-        menuInsurance.click();
+    public void selectElectronic(){
+        WebElement electronic = driver.findElement(By.xpath("//a[@href = '/catalog--elektronika/54440']"));
+        electronic.click();
     }
 }
