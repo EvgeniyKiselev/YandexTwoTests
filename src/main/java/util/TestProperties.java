@@ -10,7 +10,6 @@ public class TestProperties {
     private static TestProperties INSTANCE = null;
 
     public TestProperties() {
-        //System.setProperty("environment", "application");
         try {
             properties.load(new FileInputStream(new File("src/test/resources/" + System.getProperty("application", "application") + ".properties")));
         } catch (IOException e) {

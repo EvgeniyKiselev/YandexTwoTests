@@ -17,27 +17,23 @@ public class ElectronikaPage extends BasePage {
     @FindBy(xpath = "//a[@href = '/catalog--televizory/59601/list?hid=90639']")
     public static WebElement tv;
 
-    @FindBy(xpath = "/catalog--naushniki-i-bluetooth-garnitury/56179/list?hid=90555")
+    @FindBy(xpath = "//a[@href = '/catalog--naushniki-i-bluetooth-garnitury/56179/list?hid=90555']")
     public WebElement phones;
 
 
     public void selectTv(){
         waitSendAppClickable();
-        WebElement tv = driver.findElement(By.xpath("//a[@href = '/catalog--televizory/59601/list?hid=90639"));
+        WebElement tv = driver.findElement(By.xpath("//a[@href = '/catalog--televizory/59601/list?hid=90639']"));
         tv.click();
     }
 
     public void selectPhones(){
         waitSendAppClickable();
-        WebElement phones = driver.findElement(By.xpath("/catalog--naushniki-i-bluetooth-garnitury/56179/list?hid=90555"));
+        WebElement phones = driver.findElement(By.xpath("//a[@href = '/catalog--naushniki-i-bluetooth-garnitury/56179/list?hid=90555']"));
         phones.click();
     }
 
-    public ElectronikaPage(WebDriver driver){
-        PageFactory.initElements(driver, this);
-    }
-
-   public ElectronikaPage(){
+    public ElectronikaPage(){
        this.driver = getDriver();
    }
 

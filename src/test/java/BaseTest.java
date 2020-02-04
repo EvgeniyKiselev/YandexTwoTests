@@ -6,6 +6,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import util.TestProperties;
 
 import java.util.Properties;
@@ -21,7 +22,7 @@ public class BaseTest {
     @BeforeClass
     public static void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
-        baseUrl = "http://www.sberbank.ru/ru/person";
+        baseUrl = "https://yandex.ru/";
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -32,24 +33,5 @@ public class BaseTest {
     public static void tearDown() throws Exception {
         driver.quit();
     }
-
-    protected boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
-    protected void fillField(By locator, String value) {
-        driver.findElement(locator).clear();
-        driver.findElement(locator).sendKeys(value);
-    }
-
-    protected void checkFillField(String value, By locator) {
-        assertEquals(value, driver.findElement(locator).getAttribute("value"));
-    }
-
 }
 

@@ -19,10 +19,6 @@ public class MainPage extends BasePage {
         this.driver = getDriver();
     }
 
-    public MainPage(WebDriver driver){
-        PageFactory.initElements(driver, this);
-    }
-
     public void selectMarket(){
          WebElement market = driver.findElement(By.xpath("//a[@data-id='market']"));
         market.click();

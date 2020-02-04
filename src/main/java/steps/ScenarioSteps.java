@@ -1,71 +1,112 @@
 package steps;
-
-import cucumber.api.DataTable;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-
 public class ScenarioSteps {
     MainPageSteps mainPageSteps = new MainPageSteps();
-    SberSteps sberSteps = new SberSteps();
-    PolicySteps policySteps = new PolicySteps();
-    SendAppSteps sendAppSteps = new SendAppSteps();
+    ElectronicaSteps electronicaSteps = new ElectronicaSteps();
+    TvSteps tvSteps = new TvSteps();
+    PhonesSteps phonesSteps = new PhonesSteps();
 
-    @When("^выбран пункт меню \"(.+)\"$")
-    public void selectMenuItem(){
-        mainPageSteps.selectMenuItem();
+    @When("^осуществлен переход в раздел ЯндексМаркет$")
+    public void selectYandexMarket(){
+        mainPageSteps.selectYandexMarket();
     }
 
-    @When("^выбран вид страхования \"(.+)\"$")
-    public void selectMenuInsurance(){
-        mainPageSteps.selectMenuInsurance();
+    @When("^выбран раздел Электроника$")
+    public void selectElectronics(){
+        mainPageSteps.selectElectronics();
     }
 
-    @Then("^заголовок страницы - Страхование путешественников равен \"(.+)\"$")
-    public void checkTitleSberPage(){
-        sberSteps.checkPageTitle();
+    @When("^осуществлен переход в раздел Телевизоры$")
+    public void selectTvCatalog(){
+        electronicaSteps.selectTvCatalog();
     }
 
-    @When("^выполнено нажатие на кнопку Оформить онлайн$")
-    public void clickBtnSendApp(){
-        sberSteps.goToPolicyPage();
+    @When("ограничиваем количество телевизоров до 12")
+    public void turnTvToTwelve() throws InterruptedException {
+        tvSteps.turnToTwelve();
     }
 
-    @When("^выбрана Минимальная сумма страховой защиты$")
-    public void clickMinimal(){
-        policySteps.selectMinimal();
+    @When("^Фильтруем поиск по цене от: \"(.*)\"")
+    public void setStartTvPrice(String value){
+        tvSteps.setPrice(value);
     }
 
-    @When("^нажата кнопка Оформить$")
-    public void clickGoToSendAppPage(){
-        policySteps.goToSendAppPage();
+    @When("^выбираем производителей LG и Samsung$")
+    public void setTvCheckBox(){
+        tvSteps.setCheckBoxes();
     }
 
-    @When("^заполняются поля:$")
-    public void fillForm(DataTable fields){
-        fields.asMap(String.class, String.class)
-                .forEach((field, value) -> sendAppSteps.fillField(field, value));
-
+    @Then("^проверяем, что на странице телевизоров 12 элементов$")
+    public void checkCountOfTvElements() throws InterruptedException {
+        tvSteps.checkCountOfProducts();
+        Thread.sleep(6000);
     }
 
-    @Then("^значения полей равны:$")
-    public void checkFillFields(DataTable fields){
-        fields.asMap(String.class, String.class)
-                .forEach((field, value) -> sendAppSteps.checkFillField(field, value));
+    @When("^переход в раздел ЯндексМаркет$")
+    public void select2YandexMarket(){
+        mainPageSteps.selectYandexMarket();
     }
 
-    @When("^нажата кнопка продолжить$")
-    public void clickSendButton(){
-        sendAppSteps.clickSendButton();
+    @When("^переход в раздел Электроника$")
+    public void select2Electronics(){
+        mainPageSteps.selectElectronics();
     }
 
-
-    @Then("^выведено сообщение об ошибке")
-    public void checkErrorMessage(){
-        sendAppSteps.getErrorMessageField();
-        sendAppSteps.checkErrorMessage("При заполнении данных произошла ошибка");
+    @When("^запоминаем первый телевизор в списке$")
+    public void getFirstTvProduct(){
+        tvSteps.getFirstProduct();
     }
 
+    @When("^вводим первый телевизор в поиск$")
+    public void searchFirstTvProduct(){
+       tvSteps.searchFirstProduct();
+    }
+
+    @Then("^проверяем соответствие искомого и найденного телевизора$")
+    public void checkFirstTvIsSearhed(){
+        tvSteps.checkFirstIsSearched();
+    }
+
+    @When("^осуществлен переход в раздел Наушники$")
+    public void selectPhonesCatalog(){
+        electronicaSteps.selectPhonesCatalog();
+    }
+
+    @When("ограничиваем количество наушников до 12")
+    public void turnPhonesToTwelve() throws InterruptedException {
+        phonesSteps.turnToTwelve();
+    }
+
+    @When("^Фильтруем поиск по цене от: \"(.*)\"")
+    public void setStartPhonesPrice(String value){
+        phonesSteps.setPrice(value);
+    }
+
+    @When("^выбираем производителя Beats$")
+    public void setPhonesCheckBox(){
+        phonesSteps.setCheckBoxes();
+    }
+
+    @Then("^проверяем, что на странице наушников 12 элементов$")
+    public void checkCountOfPhonesElements() throws InterruptedException {
+        phonesSteps.checkCountOfProducts();
+        Thread.sleep(6000);
+    }
+
+    @When("^запоминаем первые наушники в списке$")
+    public void getFirstPhonesProduct(){
+        phonesSteps.getFirstProduct();
+    }
+
+    @When("^вводим первые наушники в поиск$")
+    public void searchFirstPhonesProduct(){
+        phonesSteps.searchFirstProduct();
+    }
+
+    @Then("^проверяем соответствие искомых и найденный наушников$")
+    public void checkFirstPhonesIsSearched(){
+        phonesSteps.checkFirstIsSearched();
+    }
 }

@@ -1,17 +1,16 @@
-
 package steps;
 import io.qameta.allure.Step;
 import pages.MainPage;
 
 public class MainPageSteps {
-    @Step("выбран пункт меню {0}")
-    public void selectMenuItem() {
-        new MainPage().selectMenuItem();
+    @Step("осуществлен вход на ЯндексМаркет")
+    public void selectYandexMarket() {
+        new MainPage().selectMarket();
     }
 
-    @Step("выбран вид страхования {0}")
-    public void selectMenuInsurance() {
-        new MainPage().selectInsuranceItem();
+    @Step("выбран раздел Электроника")
+    public void selectElectronics() {
+        new MainPage().selectElectronic();
     }
 
 }
