@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import util.Init;
 
 import static util.Init.getDriver;
 
@@ -16,7 +17,7 @@ public class MainPage extends BasePage {
     WebElement electronic;
 
     public MainPage(){
-        this.driver = getDriver();
+        this.driver = Init.getDriver();
     }
 
     public void selectMarket(){

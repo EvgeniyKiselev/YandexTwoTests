@@ -34,7 +34,7 @@ public class ElectronikaPage extends BasePage {
     }
 
     public ElectronikaPage(){
-       this.driver = getDriver();
+       this.driver = Init.getDriver();
    }
 
     public void waitSendAppClickable(){

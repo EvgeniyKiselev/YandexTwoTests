@@ -4,7 +4,7 @@ import pages.PhonesPage;
 
 public class PhonesSteps {
 
-    @Step("ограничение количества товаров на странице")
+    @Step("2ограничение количества товаров на странице")
     public void turnToTwelve() throws InterruptedException {
         new PhonesPage().turnToTwelve();
     }

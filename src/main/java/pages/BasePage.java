@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import util.Init;
 
 import java.util.concurrent.TimeUnit;
 
@@ -39,7 +40,7 @@ public class BasePage {
     }
 
     public BasePage(){
-        this.driver = getDriver();
+        this.driver = Init.getDriver();
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 5);
     }
@@ -93,5 +94,8 @@ public class BasePage {
 
     public void checkFillField(String value, WebElement element) {
         assertEquals(value, element.getAttribute("value"));
+    }
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
     }
 }

@@ -12,6 +12,7 @@ public class TestProperties {
     public TestProperties() {
         try {
             properties.load(new FileInputStream(new File("src/test/resources/" + System.getProperty("application", "application") + ".properties")));
+            properties.load(new FileInputStream(new File("src/test/resources/" + System.getProperty("allure", "allure") + ".properties")));
         } catch (IOException e) {
             e.printStackTrace();
         }

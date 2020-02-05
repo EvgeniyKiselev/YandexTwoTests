@@ -9,7 +9,7 @@ public class Init {
     public static TestProperties properties = TestProperties.getInstance();
 
     public static void initDriver(){
-        System.setProperty("webdriver.chrome.driver", properties.getProperties("chromedriver"));
+        System.setProperty("webdriver.chrome.driver", properties.getProperties("webdriver.chrome.driver"));
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -19,6 +19,9 @@ public class Init {
     }
 
     public static WebDriver getDriver(){
+        if(driver == null){
+            initDriver();
+        }
         return driver;
     }
     public static void closeDriver(){
