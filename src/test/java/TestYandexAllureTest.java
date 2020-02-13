@@ -3,20 +3,21 @@ import org.junit.Before;
 import org.junit.Test;
 import steps.*;
 import util.Init;
+
 import java.util.*;
 
 import static util.Init.initDriver;
 
 public class TestYandexAllureTest {
 
-    MainPageSteps mainPageSteps = new MainPageSteps();
-    ElectronicaSteps electronicaSteps = new ElectronicaSteps();
-    TvSteps tvSteps = new TvSteps();
-    PhonesSteps phonesSteps = new PhonesSteps();
-    LinkedHashMap<String, String> testData = new LinkedHashMap<>();
+    private MainPageSteps mainPageSteps = new MainPageSteps();
+    private ElectronicaSteps electronicaSteps = new ElectronicaSteps();
+    private TvSteps tvSteps = new TvSteps();
+    private PhonesSteps phonesSteps = new PhonesSteps();
+    private LinkedHashMap<String, String> testData = new LinkedHashMap<>();
 
     @Before
-    public void setUp(){
+    public void setUp() {
         initDriver();
     }
 
@@ -26,7 +27,7 @@ public class TestYandexAllureTest {
     }
 
     @Test
-    public void testYandexTvTest()  throws Exception {
+    public void testYandexTvTest() throws Exception {
 
         mainPageSteps.selectYandexMarket();
         mainPageSteps.selectElectronics();

@@ -1,4 +1,5 @@
 package steps;
+
 import io.qameta.allure.Step;
 import pages.TvPage;
 
@@ -10,32 +11,32 @@ public class TvSteps {
     }
 
     @Step("установка параметров поиска")
-    public void setPrice(String value){
+    public void setPrice(String value) {
         new TvPage().fillFieldPrice(value);
     }
 
     @Step("выбор производителей")
-    public void setCheckBoxes(){
+    public void setCheckBoxes() {
         new TvPage().setCheckboxes();
     }
 
     @Step("проверка количества товаров на странице")
-    public void checkCountOfProducts(){
+    public void checkCountOfProducts() {
         new TvPage().checkTheCount();
     }
 
     @Step("копирование первого товара")
-    public void getFirstProduct(){
+    public void getFirstProduct() {
         new TvPage().getFirstProduct();
     }
 
     @Step("ввод скопированного значения в поле поиска")
-    public void searchFirstProduct(){
+    public void searchFirstProduct() {
         new TvPage().searchFirstProduct();
     }
 
     @Step("проверка на соответствие найденного товара искомому")
-    public void checkFirstIsSearched(){
+    public void checkFirstIsSearched() {
         new TvPage().checkFirstIsSearched();
     }
 }

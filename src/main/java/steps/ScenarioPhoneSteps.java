@@ -1,24 +1,25 @@
 package steps;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class ScenarioPhoneSteps {
-    MainPageSteps mainPageSteps = new MainPageSteps();
-    ElectronicaSteps electronicaSteps = new ElectronicaSteps();
-    PhonesSteps phonesSteps = new PhonesSteps();
+    private MainPageSteps mainPageSteps = new MainPageSteps();
+    private ElectronicaSteps electronicaSteps = new ElectronicaSteps();
+    private PhonesSteps phonesSteps = new PhonesSteps();
 
     @When("^переход в раздел ЯндексМаркет$")
-    public void select2YandexMarket(){
+    public void select2YandexMarket() {
         mainPageSteps.selectYandexMarket();
     }
 
     @When("^переход в раздел Электроника$")
-    public void select2Electronics(){
+    public void select2Electronics() {
         mainPageSteps.selectElectronics();
     }
 
     @When("^осуществлен переход в раздел Наушники$")
-    public void selectPhonesCatalog(){
+    public void selectPhonesCatalog() {
         electronicaSteps.selectPhonesCatalog();
     }
 
@@ -28,12 +29,12 @@ public class ScenarioPhoneSteps {
     }
 
     @When("^Устанавливаем цену от: \"(.*)\"")
-    public void setStartPhonesPrice(String value){
+    public void setStartPhonesPrice(String value) {
         phonesSteps.setPrice(value);
     }
 
     @When("^выбираем производителя Beats$")
-    public void setPhonesCheckBox(){
+    public void setPhonesCheckBox() {
         phonesSteps.setCheckBoxes();
     }
 
@@ -44,17 +45,17 @@ public class ScenarioPhoneSteps {
     }
 
     @When("^запоминаем первые наушники в списке$")
-    public void getFirstPhonesProduct(){
+    public void getFirstPhonesProduct() {
         phonesSteps.getFirstProduct();
     }
 
     @When("^вводим первые наушники в поиск$")
-    public void searchFirstPhonesProduct(){
+    public void searchFirstPhonesProduct() {
         phonesSteps.searchFirstProduct();
     }
 
     @Then("^проверяем соответствие искомых и найденный наушников$")
-    public void checkFirstPhonesIsSearched(){
+    public void checkFirstPhonesIsSearched() {
         phonesSteps.checkFirstIsSearched();
     }
 

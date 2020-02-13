@@ -1,7 +1,6 @@
 package pages;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -11,75 +10,82 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.Init;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static util.Init.getDriver;
 
 public class BasePage {
-    WebDriver driver;
-    WebDriverWait wait;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
 
     @FindBy(xpath = "//input[@id='header-search']")
-    public static WebElement search;
+    private static WebElement search;
 
     @FindBy(xpath = "//button[@role='button' and @type='submit']")
-    public static WebElement submit;
+    private static WebElement submit;
 
     @FindBy(xpath = "//button[@role='listbox']")
-    public static WebElement listbox;
+    private static WebElement listbox;
 
     @FindBy(xpath = "//span[@class='select__text' and contains(text(), 'Показывать по 12')]")
-    public static WebElement chooseTheTwelve;
+    private static WebElement chooseTheTwelve;
 
-    public WebElement waitForElement(WebElement element){
-        return wait.until(ExpectedConditions.visibilityOf(element));
-    }
-    WebElement waitForClickable(String xpath) {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+    @FindBy(xpath = "//div[contains(@class, 'n-snippet-') and contains(@data-bem,'snippet-card')]")
+    private static List<WebElement> twelve;
+
+    @FindBy(xpath = "//div[contains(@class, 'n-snippet-') and contains(@data-bem,'snippet-card')]//h3//a")
+    private static List<WebElement> firstProducts;
+
+    @FindBy(xpath = "//div[contains(@class, 'n-snippet-') and contains(@data-bem,'snippet-card')]//h3//a")
+    private static List<WebElement> chechedProducts;
+
+    void waitForElement(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public BasePage(){
+    void waitForClickable(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    BasePage() {
         this.driver = Init.getDriver();
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 5);
     }
 
-    public void turnCountsToTwelve() throws InterruptedException {
+    void turnCountsToTwelve() throws InterruptedException {
         Actions actions = new Actions(driver);
         actions.moveToElement(listbox);
         listbox.click();
-        wait.until(ExpectedConditions.visibilityOf(chooseTheTwelve));
-        wait.until(ExpectedConditions.elementToBeClickable(chooseTheTwelve));
+        waitForElement(chooseTheTwelve);
+        waitForClickable(chooseTheTwelve);
         chooseTheTwelve.click();
         Thread.sleep(6000);
     }
 
-    public void fillField(WebElement element, String value) {
-        wait.until(ExpectedConditions.visibilityOf(element));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+    void fillField(WebElement element, String value) {
+        waitForElement(element);
+        waitForClickable(element);
         element.click();
         element.clear();
         element.sendKeys(value);
     }
 
-    public void setCheckBoxed(WebElement element){
-        wait.until(ExpectedConditions.visibilityOf(element));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+    void setCheckBoxed(WebElement element) {
+        waitForElement(element);
+        waitForClickable(element);
         element.click();
     }
 
-    public void checkTheCount(){
-        int isTwelve = driver.findElements(By.xpath("//div[contains(@class, 'n-snippet-') and contains(@data-bem,'snippet-card')]")).size();
-        if (isTwelve != 12) {
+    public void checkTheCount() {
+        if (twelve.size() != 12) {
             System.out.println("Количество товаров на странице не равно 12!");
         }
     }
 
-    public String getFirstProduct(){
+    public String getFirstProduct() {
         driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
-        String firstProduct = driver.findElements(By.xpath("//div[contains(@class, 'n-snippet-') and contains(@data-bem,'snippet-card')]//h3//a")).get(0).getText();
-        return firstProduct;
+        return firstProducts.get(0).getText();
     }
 
     public void searchFirstProduct() {
@@ -87,15 +93,8 @@ public class BasePage {
         submit.click();
     }
 
-    public void checkFirstIsSearched(){
-        String chechedProduct = driver.findElements(By.xpath("//div[contains(@class, 'n-snippet-') and contains(@data-bem,'snippet-card')]//h3//a")).get(0).getText();
-        Assert.assertEquals("Наименование товара не соответствует запомненному значению",getFirstProduct(),chechedProduct);
-    }
-
-    public void checkFillField(String value, WebElement element) {
-        assertEquals(value, element.getAttribute("value"));
-    }
-    public String getCurrentUrl(){
-        return driver.getCurrentUrl();
+    public void checkFirstIsSearched() {
+        String checkedProduct = chechedProducts.get(0).getText();
+        Assert.assertEquals("Наименование товара не соответствует запомненному значению", getFirstProduct(), checkedProduct);
     }
 }

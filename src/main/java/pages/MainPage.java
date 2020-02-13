@@ -1,32 +1,26 @@
 package pages;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import util.Init;
-
-import static util.Init.getDriver;
 
 public class MainPage extends BasePage {
 
     @FindBy(xpath = "//a[@data-id='market']")
-    WebElement market;
+    private WebElement market;
 
     @FindBy(xpath = "//a[@href = '/catalog--elektronika/54440']")
-    WebElement electronic;
+    private WebElement electronic;
 
-    public MainPage(){
+    public MainPage() {
         this.driver = Init.getDriver();
     }
 
-    public void selectMarket(){
-         WebElement market = driver.findElement(By.xpath("//a[@data-id='market']"));
+    public void selectMarket() {
         market.click();
     }
 
-    public void selectElectronic(){
-        WebElement electronic = driver.findElement(By.xpath("//a[@href = '/catalog--elektronika/54440']"));
+    public void selectElectronic() {
         electronic.click();
     }
 }

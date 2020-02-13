@@ -1,24 +1,25 @@
 package steps;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class ScenarioSteps {
-    MainPageSteps mainPageSteps = new MainPageSteps();
-    ElectronicaSteps electronicaSteps = new ElectronicaSteps();
-    TvSteps tvSteps = new TvSteps();
+    private MainPageSteps mainPageSteps = new MainPageSteps();
+    private ElectronicaSteps electronicaSteps = new ElectronicaSteps();
+    private TvSteps tvSteps = new TvSteps();
 
     @When("^осуществлен переход в раздел ЯндексМаркет$")
-    public void selectYandexMarket(){
+    public void selectYandexMarket() {
         mainPageSteps.selectYandexMarket();
     }
 
     @When("^выбран раздел Электроника$")
-    public void selectElectronics(){
+    public void selectElectronics() {
         mainPageSteps.selectElectronics();
     }
 
     @When("^осуществлен переход в раздел Телевизоры$")
-    public void selectTvCatalog(){
+    public void selectTvCatalog() {
         electronicaSteps.selectTvCatalog();
     }
 
@@ -28,12 +29,12 @@ public class ScenarioSteps {
     }
 
     @When("^Фильтруем поиск по цене от: \"(.*)\"")
-    public void setStartTvPrice(String value){
+    public void setStartTvPrice(String value) {
         tvSteps.setPrice(value);
     }
 
     @When("^выбираем производителей LG и Samsung$")
-    public void setTvCheckBox(){
+    public void setTvCheckBox() {
         tvSteps.setCheckBoxes();
     }
 
@@ -44,17 +45,17 @@ public class ScenarioSteps {
     }
 
     @When("^запоминаем первый телевизор в списке$")
-    public void getFirstTvProduct(){
+    public void getFirstTvProduct() {
         tvSteps.getFirstProduct();
     }
 
     @When("^вводим первый телевизор в поиск$")
-    public void searchFirstTvProduct(){
-       tvSteps.searchFirstProduct();
+    public void searchFirstTvProduct() {
+        tvSteps.searchFirstProduct();
     }
 
     @Then("^проверяем соответствие искомого и найденного телевизора$")
-    public void checkFirstTvIsSearhed(){
+    public void checkFirstTvIsSearhed() {
         tvSteps.checkFirstIsSearched();
     }
 
